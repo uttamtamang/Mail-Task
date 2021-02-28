@@ -3,10 +3,12 @@
     <h2 v-text="renderd">
       Your mail will render here
     </h2>
+    <p></p>
     <br />
     <h2 v-for="info in infos" :key="info.index">
       {{ info }}
     </h2>
+    <h3 id="printInfo"></h3>
     <!-- <div>
       <button
         v-for="info in infos"
@@ -68,6 +70,15 @@ export default {
     //   return text;
     // },
     renderd() {
+      // //USING .map
+      // var text = this.mail;
+      // var date = this.todayDate;
+      // var nameValues = this.infos;
+      // var finalText = nameValues.map((name) =>
+      //   text.replace("name", name.value).replace("date", date)
+      // );
+      // return finalText;
+
       // var text = this.mail;
       // var names = this.infos;
       // text = text
@@ -77,18 +88,25 @@ export default {
 
       var text = this.mail;
       // var valueText = this.mail;
-      // var names = this.infos;
-      // var indexLength = names.length;
-      // alert(indexLength);
+      var names = this.infos;
+      var indexLength = names.length;
+      var newMail = "";
+      //  alert(text);
       // var i;
-      for (var i = 0; i < this.infos.length; ++i) {
-        text = text.replace("name", this.infos[i].value);
+      console.log(names);
+      // console.log(text);
+      for (var i = 0; i < indexLength; i++) {
+        newMail +=
+          text.replace("date", this.todayDate).replace("name", names[i].value) +
+          " & ";
+        // console.log(text);
         // alert(text);
         // console.log(this.infos[i].value);
         // console.log(valueText);
-        return text;
+        // return newMail;
+        // i++;
       }
-      return text;
+      return newMail;
 
       // try {
       //   var text = this.mail;
