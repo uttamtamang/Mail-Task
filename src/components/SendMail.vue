@@ -17,8 +17,9 @@
         >Add Your Infos</b-button
       >
       <div v-for="(userinfo, index) in infos" :key="index">
-        <input v-model="userinfo.key" placeholder="Your Name" />
-        <input v-model="userinfo.value" placeholder="Your Address" />
+        <h1>This is your {{ index + 1 }} info</h1>
+        <input v-model="userinfo.key" placeholder="Key" />
+        <input v-model="userinfo.value" placeholder="Value" />
         <b-button
           v-on:click="removeInfo(index)"
           variant="danger"
