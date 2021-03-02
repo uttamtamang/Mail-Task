@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h2 v-text="renderd">
+    <!-- initial text render element -->
+    <!-- <h2 v-text="renderd">
       Your mail will render here
+    </h2> -->
+    <h2 v-for="text in renderd" :key="text.index">
+      {{ text }}
     </h2>
     <p></p>
     <br />
@@ -70,15 +74,19 @@ export default {
     //   return text;
     // },
     renderd() {
-      // //USING .map
-      // var text = this.mail;
-      // var date = this.todayDate;
-      // var nameValues = this.infos;
+      //USING .map
+      var text = this.mail;
+      var date = this.todayDate;
+      var nameValues = this.infos;
       // var finalText = nameValues.map((name) =>
       //   text.replace("name", name.value).replace("date", date)
       // );
       // return finalText;
 
+      var finalText = nameValues.map((name) =>
+        text.replace("date", date).concat(name.value)
+      );
+      return finalText;
       // var text = this.mail;
       // var names = this.infos;
       // text = text
@@ -86,27 +94,27 @@ export default {
       //   .replace("key", names[1].value);
       // return text;
 
-      var text = this.mail;
-      // var valueText = this.mail;
-      var names = this.infos;
-      var indexLength = names.length;
-      var newMail = "";
-      //  alert(text);
-      // var i;
-      console.log(names);
-      // console.log(text);
-      for (var i = 0; i < indexLength; i++) {
-        newMail +=
-          text.replace("date", this.todayDate).replace("name", names[i].value) +
-          " & ";
-        // console.log(text);
-        // alert(text);
-        // console.log(this.infos[i].value);
-        // console.log(valueText);
-        // return newMail;
-        // i++;
-      }
-      return newMail;
+      // var text = this.mail;
+      // // var valueText = this.mail;
+      // var names = this.infos;
+      // var indexLength = names.length;
+      // var newMail = "";
+      // //  alert(text);
+      // // var i;
+      // console.log(names);
+      // // console.log(text);
+      // for (var i = 0; i < indexLength; i++) {
+      //   newMail +=
+      //     text.replace("date", this.todayDate).replace("name", names[i].value) +
+      //     " & ";
+      //   // console.log(text);
+      //   // alert(text);
+      //   // console.log(this.infos[i].value);
+      //   // console.log(valueText);
+      //   // return newMail;
+      //   // i++;
+      // }
+      // return newMail;
 
       // try {
       //   var text = this.mail;
